@@ -1,4 +1,4 @@
-﻿using BuyingLibrary.models.interfaces;
+﻿using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,18 +7,27 @@ using System.Threading.Tasks;
 
 namespace BuyingLibrary.models.classes
 {
-    internal class Buy : IBuy
+    public  class Buy
     {
-        public string Id { get; set; }
 
-        public string Name {get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
 
-        public string Description { get; set; }
+        [BsonElement("name")]
+        public string? Name { get; set; }
 
-        public double Coast {get; set; }
+        [BsonElement("description")]
+        public string? Description { get; set; }
 
-        public IItem Item { get; set; }
-        
+        [BsonElement("cost")]
+        public double Cost { get; set; }
+
+        [BsonElement("item")]
+        public string? Item { get; set; }
+
+        [BsonElement("count")]
         public int Count { get; set; }
+
     }
 }

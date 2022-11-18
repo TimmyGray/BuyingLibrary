@@ -9,9 +9,11 @@ namespace BuyingLibrary.Contexts
     public class Settings
     {
 
-        public string ConnectionStrings { get; set; }
+        public string ConnectionStrings { get; set; } = null!;
 
-        public string DataBase { get; set; }
+        public string DataBase { get; set; } = null!;
+
+        
 
     }
 }

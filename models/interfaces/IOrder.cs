@@ -6,21 +6,27 @@ using System.Text;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using BuyingLibrary.models.classes;
 
 namespace BuyingLibrary.models.interfaces
 {
-    internal interface IOrder
+    public interface IOrder
     {
         [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
         string Id { get; set; }
 
+        [BsonElement("name")]
         string Name { get; set; }
 
-        DateTime Created { get; set; }
+        [BsonElement("created")]
+        DateTime Created { get; }
 
+        [BsonElement("status")]
         public OrderStatus Status { get; set; }
-        
-        List<IBuy> Buys { get; set; }
+
+        [BsonElement("listofbuys")]
+        List<Buy> Buys { get; set; }
 
     }
 }
