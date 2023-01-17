@@ -28,8 +28,7 @@ namespace BuyingLibrary.Contexts
 
         public async Task<Buy> GetAsync(string id)
         {
-            var filter = Builders<Buy>.Filter.Eq(o => o.Id, id);
-            return await collection.Find<Buy>(filter).FirstAsync();
+            return await collection.Find(b=>b.Id== id).FirstOrDefaultAsync<Buy>();
         }
 
         public async Task<Buy> PostAsync(Buy newbuy)
@@ -52,9 +51,7 @@ namespace BuyingLibrary.Contexts
         public async Task<Buy> DeleteAsync(string id)
         {
 
-            var filter = Builders<Buy>.Filter.Eq(o => o.Id, id);
-            var result = await collection.FindOneAndDeleteAsync<Buy>(filter);
-            return result;
+            return await collection.FindOneAndDeleteAsync<Buy>(b=>b.Id==id);
 
         }
     }

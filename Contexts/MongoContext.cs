@@ -11,6 +11,8 @@ namespace BuyingLibrary.Contexts
     {
         private readonly IMongoCollection<Order> ordercollection;
         private readonly IMongoCollection<Buy> buyscollection;
+        private readonly IMongoCollection<Price> pricescollection;
+        private readonly IMongoCollection<Connector> connectorscollection;
         
 
         public MongoContext(IOptions<Settings> settings)
@@ -18,11 +20,13 @@ namespace BuyingLibrary.Contexts
             Console.WriteLine($"Database connection string:{settings.Value.ConnectionStrings}");
             Console.WriteLine($"name of Database:{settings.Value.DataBase}");
             
-            var client = new MongoClient("mongodb://127.0.0.1:12908");
+            var client = new MongoClient(settings.Value.ConnectionStrings);
             var db = client.GetDatabase(settings.Value.DataBase);
             
             ordercollection = db.GetCollection<Order>("orders");
             buyscollection = db.GetCollection<Buy>("buys");
+            pricescollection = db.GetCollection<Price>("prices");
+            connectorscollection = db.GetCollection<Connector>("connectors");
 
         }
 
@@ -42,7 +46,21 @@ namespace BuyingLibrary.Contexts
             }
         }
 
+        internal IMongoCollection<Price> PricesCollection
+        {
+            get
+            {
+                return pricescollection;
+            }
+        }
 
+        internal IMongoCollection<Connector> ConnectorsCollection
+        {
+            get 
+            { 
+                return connectorscollection;
+            }
+        }
         
     }
 }
