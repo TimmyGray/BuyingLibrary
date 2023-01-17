@@ -10,7 +10,6 @@ namespace BuyingLibrary.models.classes
     public  class Buy
     {
 
-        [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
 

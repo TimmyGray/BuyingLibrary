@@ -12,9 +12,10 @@ namespace BuyingLibrary.models.classes
 {
     public class Order : IOrder
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
+        
+        [BsonElement("client")]
+        public Client client { get; set; }  
 
         [BsonElement("name")]
         public string Name { get; set; }
@@ -33,6 +34,7 @@ namespace BuyingLibrary.models.classes
 
             Buys = new List<Buy>();
             Created = DateTime.Now;
+            Status = OrderStatus.under_consideration;
 
         }
 

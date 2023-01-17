@@ -12,21 +12,23 @@ namespace BuyingLibrary.models.interfaces
 {
     public interface IOrder
     {
-        [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        string Id { get; set; }
+        public string Id { get; set; }
+
+        [BsonElement("client")]
+        public Client client { get; set; }
 
         [BsonElement("name")]
-        string Name { get; set; }
+        public string Name { get; set; }
 
         [BsonElement("created")]
-        DateTime Created { get; }
+        public DateTime Created { get; }
 
         [BsonElement("status")]
         public OrderStatus Status { get; set; }
 
         [BsonElement("listofbuys")]
-        List<Buy> Buys { get; set; }
+        public List<Buy> Buys { get; set; }
 
     }
 }

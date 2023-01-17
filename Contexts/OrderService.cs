@@ -57,15 +57,20 @@ namespace BuyingLibrary.Contexts
 
         public async Task<Order> GetAsync(string id)
         {
-            var filter = Builders<Order>.Filter.Eq(o=>o.Id,id);
-            return await collection.Find<Order>(filter).FirstAsync();
+            return await collection.Find<Order>(o=>o.Id==id).FirstOrDefaultAsync();
         }
         
         public async Task<Order> PostAsync(Order neworder)
         {
-            
-            await collection.InsertOneAsync(neworder);
-            return neworder;
+            Order order = new Order
+            {
+                Name = neworder.Name,
+                client = neworder.client,
+                Buys = neworder.Buys
+            };
+
+            await collection.InsertOneAsync(order);
+            return order;
 
 
         }
@@ -81,9 +86,7 @@ namespace BuyingLibrary.Contexts
         public async Task<Order> DeleteAsync(string id)
         {
 
-            var filter  = Builders<Order>.Filter.Eq(o=>o.Id,id);
-            var result = await collection.FindOneAndDeleteAsync<Order>(filter);
-            return result;
+            return await collection.FindOneAndDeleteAsync<Order>(o=>o.Id==id);
 
         }
 
