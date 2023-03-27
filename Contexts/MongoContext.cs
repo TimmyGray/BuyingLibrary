@@ -56,16 +56,6 @@ namespace BuyingLibrary.Contexts
                 return pricescollection;
             }
         }
-<<<<<<< HEAD
-=======
-
-        internal IMongoCollection<Connector> ConnectorsCollection
-        {
-            get 
-            { 
-                return connectorscollection;
-            }
-        }
 
         internal IMongoCollection<Coil> CoilsCollection
         {
@@ -84,7 +74,6 @@ namespace BuyingLibrary.Contexts
             }
 
         }
->>>>>>> connector-service-checking
 
         internal IMongoCollection<Connector> ConnectorsCollection
         {

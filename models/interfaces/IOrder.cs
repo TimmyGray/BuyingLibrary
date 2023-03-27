@@ -19,9 +19,6 @@ namespace BuyingLibrary.models.interfaces
         [BsonElement("client")]
         public Client client { get; set; }
 
-        [BsonElement("client")]
-        public Client client { get; set; }
-
         [BsonElement("name")]
         public string Name { get; set; }
 
