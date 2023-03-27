@@ -7,13 +7,17 @@ using System.Threading.Tasks;
 
 namespace BuyingLibrary.models.classes
 {
-    public abstract class Item
+    public class Item
     {
         [BsonRepresentation(BsonType.ObjectId)]
-        public abstract string? Id { get; set; }
+        [BsonId]
+        public string? _id { get; set; }
 
         [BsonElement("name")]
-        public abstract string? Name { get; set; }
+        public string? Name { get; set; }
+
+        [BsonElement("type")]
+        public string? Type { get; set; }
 
         
 

@@ -5,21 +5,25 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace BuyingLibrary
 {
-    public class Wire : Item
+    public class Wire
     {
         
-        public override string? Id { get; set; }
+        public string? _id { get; set; }
 
-        public override string? Name { get; set; }
+        [BsonElement("name")]
+        public string? Name { get; set; }
         
         [BsonElement("length")]
         public double Length { get; set; }
 
         [BsonElement("firstconn")]
-        public Connector? firstconnector { get; set; }
+        public Connector[]? Firstconnector { get; set; }
 
         [BsonElement("secondconn")]
-        public Connector? secondconnector { get; set; }
+        public Connector[]? Secondconnector { get; set; }
+
+        [BsonElement("numberofconnectors")]
+        public int NumberOfConnectors { get; set; }
 
         
     }

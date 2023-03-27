@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BuyingLibrary.models.enums;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace BuyingLibrary.models.classes
 {
-    public class Connector:Item
+    public class Coil:Item
     {
-        //[BsonId]
         //[BsonRepresentation(BsonType.ObjectId)]
+        //[BsonId]
         //public string? _id { get; set; }
 
         //[BsonElement("name")]
@@ -21,12 +20,15 @@ namespace BuyingLibrary.models.classes
         //[BsonElement("type")]
         //public string? Type { get; set; }
 
-        [BsonElement("count")]
-        public int? Count { get; set; }
+        [BsonElement("length")]
+        public double Length { get; set; }
+        
+        [BsonElement("typeofsignal")]
+        public string? typeofsignal { get; set; }
 
         public override string ToString()
         {
-            return $"\n\t---Connector---\n{_id}\n{Name}\n{Type}\n";
+            return $"\n\t---Coil---\n{_id}\n{Name}\n{Type}\n{Length}\n{typeofsignal}\n";
         }
 
     }

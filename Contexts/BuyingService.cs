@@ -28,12 +28,15 @@ namespace BuyingLibrary.Contexts
 
         public async Task<Buy> GetAsync(string id)
         {
-            return await collection.Find(b=>b.Id== id).FirstOrDefaultAsync<Buy>();
+            return await collection.Find(b=>b._id == id).FirstOrDefaultAsync<Buy>();
         }
 
         public async Task<Buy> PostAsync(Buy newbuy)
         {
-
+            //if (newbuy._id!="")
+            //{
+            //    return newbuy;
+            //}
             await collection.InsertOneAsync(newbuy);
             return newbuy;
 
@@ -42,7 +45,7 @@ namespace BuyingLibrary.Contexts
 
         public async Task<Buy> PutAsync(Buy newbuy)
         {
-            var filter = Builders<Buy>.Filter.Eq(o => o.Id, newbuy.Id);
+            var filter = Builders<Buy>.Filter.Eq(o => o._id, newbuy._id);
             var update = Builders<Buy>.Update.Set(o => o, newbuy);
             var result = await collection.FindOneAndUpdateAsync(filter, update);
             return result;
@@ -51,7 +54,7 @@ namespace BuyingLibrary.Contexts
         public async Task<Buy> DeleteAsync(string id)
         {
 
-            return await collection.FindOneAndDeleteAsync<Buy>(b=>b.Id==id);
+            return await collection.FindOneAndDeleteAsync<Buy>(b=>b._id==id);
 
         }
     }
