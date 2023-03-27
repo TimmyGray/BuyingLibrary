@@ -32,6 +32,9 @@ namespace BuyingLibrary.models.classes
         [BsonElement("count")]
         public int Count { get; set; }
 
+        [BsonElement("image")]
+        public BuyImage Image { get; set; }
+
         public override string ToString()
         {
             return $"\n\t-----Buy-----\nname - {Name}\ndescription - {Description}\ncost - {Cost}\nitem - {Item}\n";
