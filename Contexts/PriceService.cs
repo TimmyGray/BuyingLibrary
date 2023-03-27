@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace BuyingLibrary.Contexts
 {
-    public class PriceService : IService<Price>
+    public class PriceService : IService<BsonDocument>
     {
-        public IMongoCollection<Price> collection { get; }
+        public IMongoCollection<BsonDocument> collection { get; }
 
         public PriceService(MongoContext context) 
         {
@@ -18,27 +18,29 @@ namespace BuyingLibrary.Contexts
         
         }
 
-        public Task<Price> DeleteAsync(string id)
+        public Task<BsonDocument> DeleteAsync(string id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<Price>> GetAsync()
+        public async Task<List<BsonDocument>> GetAsync()
         {
-            return collection.Find<Price>("{}").ToListAsync();
+            var documents =await collection.Find("{}").ToListAsync();
+           
+            return documents;
         }
 
-        public Task<Price> GetAsync(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Price> PostAsync(Price obj)
+        public Task<BsonDocument> GetAsync(string id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Price> PutAsync(Price obj)
+        public Task<BsonDocument> PostAsync(BsonDocument obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<BsonDocument> PutAsync(BsonDocument obj)
         {
             throw new NotImplementedException();
         }

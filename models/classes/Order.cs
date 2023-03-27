@@ -12,7 +12,9 @@ namespace BuyingLibrary.models.classes
 {
     public class Order : IOrder
     {
-        public string Id { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)]
+        [BsonId]
+        public string _id { get; set; }
         
         [BsonElement("client")]
         public Client client { get; set; }  
@@ -36,6 +38,17 @@ namespace BuyingLibrary.models.classes
             Created = DateTime.Now;
             Status = OrderStatus.under_consideration;
 
+        }
+
+        public override string ToString()
+        {
+            return $"\n\t---Order---\n" +
+                $"id:{_id}\n" +
+                $"name:{Name}\n" +
+                $"status:{Status}\n" +
+                $"date of create:{Created}\n" +
+                $"client name:{client.Name}\n" +
+                $"client email:{client.Email}\n";
         }
 
     }

@@ -9,12 +9,14 @@ namespace BuyingLibrary.models.classes
 {
     public class Client
     {
-        public string Id { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? _id { get; set; }
 
         [BsonElement("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [BsonElement("email")]
-        public string Email { get; set; }
+        public string? Email { get; set; }
     }
 }

@@ -13,7 +13,8 @@ namespace BuyingLibrary.models.interfaces
     public interface IOrder
     {
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        [BsonId]
+        public string _id { get; set; }
 
         [BsonElement("client")]
         public Client client { get; set; }

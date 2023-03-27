@@ -11,9 +11,10 @@ namespace BuyingLibrary.Contexts
     {
         private readonly IMongoCollection<Order> ordercollection;
         private readonly IMongoCollection<Buy> buyscollection;
-        private readonly IMongoCollection<Price> pricescollection;
+        private readonly IMongoCollection<BsonDocument> pricescollection;
         private readonly IMongoCollection<Connector> connectorscollection;
         private readonly IMongoCollection<Coil> coilscollection;
+        private readonly IMongoCollection<Client> clientscollection;
         
 
         public MongoContext(IOptions<Settings> settings)
@@ -26,9 +27,10 @@ namespace BuyingLibrary.Contexts
             
             ordercollection = db.GetCollection<Order>("orders");
             buyscollection = db.GetCollection<Buy>("buys");
-            pricescollection = db.GetCollection<Price>("prices");
+            pricescollection = db.GetCollection<BsonDocument>("prices");
             connectorscollection = db.GetCollection<Connector>("connectors");
             coilscollection = db.GetCollection<Coil>("coils");
+            clientscollection = db.GetCollection<Client>("clients");
         }
 
         internal IMongoCollection<Order> OrderCollection
@@ -47,7 +49,7 @@ namespace BuyingLibrary.Contexts
             }
         }
 
-        internal IMongoCollection<Price> PricesCollection
+        internal IMongoCollection<BsonDocument> PricesCollection
         {
             get
             {
@@ -69,6 +71,16 @@ namespace BuyingLibrary.Contexts
             {
                 return coilscollection;
             }
+        }
+
+        internal IMongoCollection<Client> ClientsCollection
+        {
+
+            get
+            {
+                return clientscollection;
+            }
+
         }
 
         

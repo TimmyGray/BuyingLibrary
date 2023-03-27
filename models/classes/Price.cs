@@ -8,18 +8,26 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace BuyingLibrary.models.classes
 {
+    [BsonIgnoreExtraElements]
     public class Price
     {
-        public string Id { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? _id { get; set; }
 
         [BsonElement("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [BsonElement("cost")]
         public double Cost { get; set; }
 
-        [BsonElement("itemofprice")]
-        public Item Itemofprice { get; set; }
+        [BsonIgnore]
+        public Item? Itemofprice { get; set; }
+
+        public override string ToString()
+        {
+            return $"\n\t---Price---\n{_id}\n{Name}\n{Cost}\n{Itemofprice}\n";
+        }
 
     }
 }
