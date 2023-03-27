@@ -11,15 +11,10 @@ namespace BuyingLibrary.Contexts
     {
         private readonly IMongoCollection<Order> ordercollection;
         private readonly IMongoCollection<Buy> buyscollection;
-<<<<<<< HEAD
-        private readonly IMongoCollection<Price> pricescollection;
-        private readonly IMongoCollection<Connector> connectorscollection;
-=======
         private readonly IMongoCollection<BsonDocument> pricescollection;
         private readonly IMongoCollection<Connector> connectorscollection;
         private readonly IMongoCollection<Coil> coilscollection;
         private readonly IMongoCollection<Client> clientscollection;
->>>>>>> connector-service-checking
         
 
         public MongoContext(IOptions<Settings> settings)
@@ -32,16 +27,10 @@ namespace BuyingLibrary.Contexts
             
             ordercollection = db.GetCollection<Order>("orders");
             buyscollection = db.GetCollection<Buy>("buys");
-<<<<<<< HEAD
-            pricescollection = db.GetCollection<Price>("prices");
-            connectorscollection = db.GetCollection<Connector>("connectors");
-
-=======
             pricescollection = db.GetCollection<BsonDocument>("prices");
             connectorscollection = db.GetCollection<Connector>("connectors");
             coilscollection = db.GetCollection<Coil>("coils");
             clientscollection = db.GetCollection<Client>("clients");
->>>>>>> connector-service-checking
         }
 
         internal IMongoCollection<Order> OrderCollection
@@ -60,11 +49,7 @@ namespace BuyingLibrary.Contexts
             }
         }
 
-<<<<<<< HEAD
-        internal IMongoCollection<Price> PricesCollection
-=======
         internal IMongoCollection<BsonDocument> PricesCollection
->>>>>>> connector-service-checking
         {
             get
             {

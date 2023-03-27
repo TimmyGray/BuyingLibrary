@@ -12,8 +12,6 @@ namespace BuyingLibrary.Contexts
         public string ConnectionStrings { get; set; } = null!;
 
         public string DataBase { get; set; } = null!;
-
         
-
     }
 }
