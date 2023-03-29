@@ -19,7 +19,7 @@ namespace BuyingLibrary.models.classes
         public string? Name { get; set; }
 
         [BsonElement("cost")]
-        public double Cost { get; set; }
+        public double? Cost { get; set; }
 
         [BsonIgnore]
         public Item? Itemofprice { get; set; }

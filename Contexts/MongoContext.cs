@@ -1,5 +1,6 @@
 ﻿global using MongoDB.Bson;
 global using MongoDB.Driver;
+global using MongoDB.Driver.GridFS;
 using BuyingLibrary.models.classes;
 using BuyingLibrary.models.interfaces;
 using Microsoft.Extensions.Options;
@@ -15,22 +16,27 @@ namespace BuyingLibrary.Contexts
         private readonly IMongoCollection<Connector> connectorscollection;
         private readonly IMongoCollection<Coil> coilscollection;
         private readonly IMongoCollection<Client> clientscollection;
-        
+        private readonly GridFSBucket imagestore;
+
 
         public MongoContext(IOptions<Settings> settings)
         {
             Console.WriteLine($"Database connection string:{settings.Value.ConnectionStrings}");
             Console.WriteLine($"name of Database:{settings.Value.DataBase}");
-            
+
             var client = new MongoClient(settings.Value.ConnectionStrings);
             var db = client.GetDatabase(settings.Value.DataBase);
-            
+
             ordercollection = db.GetCollection<Order>("orders");
             buyscollection = db.GetCollection<Buy>("buys");
             pricescollection = db.GetCollection<BsonDocument>("prices");
             connectorscollection = db.GetCollection<Connector>("connectors");
             coilscollection = db.GetCollection<Coil>("coils");
             clientscollection = db.GetCollection<Client>("clients");
+            imagestore = new GridFSBucket(db, new GridFSBucketOptions
+            {
+                BucketName = "imagestore"
+            });
         }
 
         internal IMongoCollection<Order> OrderCollection
@@ -77,11 +83,20 @@ namespace BuyingLibrary.Contexts
 
         internal IMongoCollection<Connector> ConnectorsCollection
         {
-            get 
-            { 
+            get
+            {
                 return connectorscollection;
             }
         }
-        
+
+        internal GridFSBucket Imagestore
+        {
+
+            get
+            {
+                return imagestore;
+            }
+
+        }
     }
 }

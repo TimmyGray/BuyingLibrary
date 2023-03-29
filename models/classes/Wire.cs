@@ -14,7 +14,7 @@ namespace BuyingLibrary
         public string? Name { get; set; }
         
         [BsonElement("length")]
-        public double Length { get; set; }
+        public double? Length { get; set; }
 
         [BsonElement("firstconn")]
         public Connector[]? Firstconnector { get; set; }
@@ -23,7 +23,7 @@ namespace BuyingLibrary
         public Connector[]? Secondconnector { get; set; }
 
         [BsonElement("numberofconnectors")]
-        public int NumberOfConnectors { get; set; }
+        public int? NumberOfConnectors { get; set; }
 
         
     }

@@ -33,7 +33,7 @@ namespace BuyingLibrary.models.classes
         public int Count { get; set; }
 
         [BsonElement("image")]
-        public BuyImage Image { get; set; }
+        public BuyImage? Image { get; set; }
 
         public override string ToString()
         {
