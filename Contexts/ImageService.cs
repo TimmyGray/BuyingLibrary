@@ -48,6 +48,20 @@ namespace BuyingLibrary.Contexts
 
         }
 
+        public async Task GetOne(string id, Stream dowload)
+        {
+            Console.WriteLine("Get Image method");
+            ObjectId _id = new ObjectId(id);
+            Console.WriteLine(_id.ToString());
+            //var file = await imagestore.Find(new BsonDocument("_id",_id)).FirstOrDefaultAsync();
+
+            //Console.WriteLine(file);
+            // byte[] file1 = new byte[file.Length];
+            await imagestore.DownloadToStreamAsync(_id, dowload);
+            
+
+        }
+
 
     }
 }
