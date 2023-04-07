@@ -22,7 +22,7 @@ namespace BuyingLibrary.Contexts
         public async Task<List<Buy>> GetAsync()
         {
 
-            return await collection.Find<Buy>("{}").ToListAsync();
+           return await collection.Find<Buy>(b=>b.IsCustom==false).ToListAsync();
 
         }
 

@@ -35,7 +35,12 @@ namespace BuyingLibrary.Contexts
 
         public async Task<Client> PostAsync(Client obj)
         {
-
+            Console.WriteLine("Post client service");
+            var client  =await collection.Find(c=>c.Email==obj.Email).FirstOrDefaultAsync<Client>();
+            if (client != null)
+            {
+                return client;
+            } 
             await collection.InsertOneAsync(obj);
             return obj;
         }

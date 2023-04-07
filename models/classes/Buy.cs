@@ -35,9 +35,12 @@ namespace BuyingLibrary.models.classes
         [BsonElement("image")]
         public BuyImage? Image { get; set; }
 
+        [BsonElement("custom")]
+        public bool IsCustom { get; set; }
+
         public override string ToString()
         {
-            return $"\n\t-----Buy-----\nname - {Name}\ndescription - {Description}\ncost - {Cost}\nitem - {Item}\n";
+            return $"\n\t-----Buy-----\nname - {Name}\ndescription - {Description}\ncost - {Cost}\nitem - {Item}\nis custom - {IsCustom}\n";
         }
 
     }

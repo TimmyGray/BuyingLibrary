@@ -49,6 +49,7 @@ namespace BuyingLibrary.Contexts
         
         public async Task<Order> PostAsync(Order neworder)
         {
+            Console.WriteLine("Post order service");
             //var client  =await clientcollection
             //    .Find(c=>c._id==neworder.client._id)
             //    .FirstOrDefaultAsync<Client>();
@@ -56,9 +57,21 @@ namespace BuyingLibrary.Contexts
             //    .Find(o=>o.client.Name== neworder.client.Name&&o.client.Email==neworder.client.Email)
             //    .FirstOrDefault<Order>();
             //neworder.client._id = client._id;
-            
-            await collection.InsertOneAsync(neworder);
+            foreach (var buy in neworder.Buys)
+            {
+                if (buy._id=="")
+                {
+                    buy._id = ObjectId.GenerateNewId().ToString();
+                    buy.Image._id= ObjectId.GenerateNewId().ToString();
+                    Console.WriteLine($"Id for custom buy: {buy._id}");
+
+                }
+                Console.WriteLine(buy._id);
+            }
+
             Console.WriteLine(neworder.ToString());
+
+            await collection.InsertOneAsync(neworder);
             return neworder;
 
 
