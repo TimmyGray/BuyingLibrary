@@ -36,7 +36,7 @@ namespace BuyingLibrary.models.classes
         public BuyImage? Image { get; set; }
 
         [BsonElement("custom")]
-        public bool IsCustom { get; set; }
+        public bool IsCustom { get; set; } = false;
 
         public override string ToString()
         {

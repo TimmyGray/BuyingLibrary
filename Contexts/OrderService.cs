@@ -63,6 +63,7 @@ namespace BuyingLibrary.Contexts
                 {
                     buy._id = ObjectId.GenerateNewId().ToString();
                     buy.Image._id= ObjectId.GenerateNewId().ToString();
+                    buy.IsCustom = true;
                     Console.WriteLine($"Id for custom buy: {buy._id}");
 
                 }
