@@ -8,9 +8,12 @@ Each part contains front and backend with joint mongo database. Most of features
 please, write me!In additional,i is writing(Not yet finished) this pet-project for show to potential employer my hard skills. So, it is not real app you should use in your business,ofc=)  
 
 This is library for server app that you can find by this link: https://github.com/TimmyGray/Dotnet_Server  
-Includes various models, contexts and methods for the interaction with mongo database  
+Includes various models, contexts and methods for the interaction with mongo database. Using GridFs allow storing the images.  
+
 
 How to use:  
 1) Clone this repo  
 2) Build this project  
 3) Add builded lib to the server app  
+
+Stack: .NET Core, Entity Framework(mongo db)  
