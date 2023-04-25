@@ -3,6 +3,7 @@ global using MongoDB.Driver;
 global using MongoDB.Driver.GridFS;
 using BuyingLibrary.models.classes;
 using BuyingLibrary.models.interfaces;
+using BuyingLibrary.AppSettings;
 using Microsoft.Extensions.Options;
 
 
@@ -19,12 +20,10 @@ namespace BuyingLibrary.Contexts
         private readonly GridFSBucket imagestore;
 
 
-        public MongoContext(IOptions<Settings> settings)
+        public MongoContext(IOptions<DataBaseOptions> settings)
         {
-            Console.WriteLine($"Database connection string:{settings.Value.ConnectionStrings}");
-            Console.WriteLine($"name of Database:{settings.Value.DataBase}");
 
-            var client = new MongoClient(settings.Value.ConnectionStrings);
+            var client = new MongoClient(settings.Value.DataBaseConnection);
             var db = client.GetDatabase(settings.Value.DataBase);
 
             ordercollection = db.GetCollection<Order>("orders");
