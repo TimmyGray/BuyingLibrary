@@ -9,6 +9,7 @@ namespace BuyingLibrary.models.classes
 {
     public class Client
     {
+
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? _id { get; set; }
@@ -18,5 +19,8 @@ namespace BuyingLibrary.models.classes
 
         [BsonElement("email")]
         public string? Email { get; set; }
+
+
+
     }
 }
