@@ -9,6 +9,7 @@ namespace BuyingLibrary.models.classes
 {
     public class Item
     {
+
         [BsonRepresentation(BsonType.ObjectId)]
         [BsonId]
         public string? _id { get; set; }
@@ -20,7 +21,5 @@ namespace BuyingLibrary.models.classes
         public string? Type { get; set; }
 
         
-
-
     }
 }
