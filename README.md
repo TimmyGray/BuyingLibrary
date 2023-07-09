@@ -10,6 +10,7 @@ please, write me!In additional,i is writing(Not yet finished) this pet-project f
 This is library for server app that you can find by this link: https://github.com/TimmyGray/Dotnet_Server  
 Includes various models, contexts and methods for the interaction with mongo database. Using GridFs allow storing the images.  
 
+ATTENTION!!For now, I is implementing authenticaton in corresponding branch, so, if wou want working code(without authentication) - take master branch!
 
 How to use:  
 1) Clone this repo  
