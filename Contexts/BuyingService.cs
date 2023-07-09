@@ -57,5 +57,10 @@ namespace BuyingLibrary.Contexts
             return await collection.FindOneAndDeleteAsync<Buy>(b=>b._id==id);
 
         }
+
+        public Task<Buy> GetAsync(string field1, string field2)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

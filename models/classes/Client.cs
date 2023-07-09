@@ -1,9 +1,4 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BuyingLibrary.models.classes
 {
@@ -20,7 +15,15 @@ namespace BuyingLibrary.models.classes
         [BsonElement("email")]
         public string? Email { get; set; }
 
-
+        public string Password { get;set; }
+        
+        public Client(string name, string email, string password) 
+        {
+            Name = name;
+            Email = email;
+            Password = BCrypt.Net.BCrypt.HashPassword(password,BCrypt.Net.BCrypt.GenerateSalt());
+            
+        }
 
 
     }

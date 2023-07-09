@@ -40,5 +40,10 @@ namespace BuyingLibrary.Contexts
         {
             throw new NotImplementedException();
         }
+
+        public Task<Connector> GetAsync(string field1, string field2)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

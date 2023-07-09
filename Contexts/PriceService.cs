@@ -46,5 +46,10 @@ namespace BuyingLibrary.Contexts
         {
             throw new NotImplementedException();
         }
+
+        public Task<BsonDocument> GetAsync(string field1, string field2)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
