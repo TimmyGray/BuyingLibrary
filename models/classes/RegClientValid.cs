@@ -19,7 +19,7 @@ namespace BuyingLibrary.models.classes
 
         [Required(ErrorMessage ="Password required!")]
         [StringLength (30,MinimumLength = 10)]
-        [RegularExpression(@"\w*[!@#$%^&*]+[0-9]+\w+[!@#$%^&*]*[0-9]*\w*")]
+        //[RegularExpression(@"\w*[!@#$%^&*]+[0-9]+\w+[!@#$%^&*]*[0-9]*\w*")]
         public string Password { get; set; }
 
         [Compare("Password")]

@@ -54,7 +54,7 @@ namespace BuyingLibrary.AppSettings
                 ISSUER = configuration["Issuer"];
                 AUDIENCE = configuration["Audience"];
                 KEY = configuration["Key"];
-
+                Console.WriteLine("Successful jwtoptions creation");
                 if (ISSUER == "" || AUDIENCE == "" && KEY == "")
                 {
                     ISSUER = "My Issuer";
