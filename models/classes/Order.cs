@@ -17,7 +17,7 @@ namespace BuyingLibrary.models.classes
         public string _id { get; set; }
         
         [BsonElement("client")]
-        public Client client { get; set; }  
+        public Client Client { get; set; }  
 
         [BsonElement("name")]
         public string Name { get; set; }
@@ -47,8 +47,8 @@ namespace BuyingLibrary.models.classes
                 $"name:{Name}\n" +
                 $"status:{Status}\n" +
                 $"date of create:{Created}\n" +
-                $"client name:{client.Name}\n" +
-                $"client email:{client.Email}\n";
+                $"client name:{Client.Login}\n" +
+                $"client email:{Client.Email}\n";
         }
 
     }

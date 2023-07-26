@@ -34,7 +34,7 @@ namespace BuyingLibrary.Contexts
         public async Task<List<Order>> GetAsync(string clientid)
         {
             return await collection
-                .Find(o=>o.client.Name==clientid)
+                .Find(o=>o.Client.Login==clientid)
                 .ToListAsync<Order>();
         }
 
@@ -42,7 +42,7 @@ namespace BuyingLibrary.Contexts
         {
 
             return await collection
-                .Find(o=>o.client.Name==clientid&&o._id ==orderid)
+                .Find(o=>o.Client.Login==clientid&&o._id ==orderid)
                 .FirstOrDefaultAsync<Order>();
 
         }
@@ -50,13 +50,10 @@ namespace BuyingLibrary.Contexts
         public async Task<Order> PostAsync(Order neworder)
         {
             Console.WriteLine("Post order service");
-            //var client  =await clientcollection
-            //    .Find(c=>c._id==neworder.client._id)
-            //    .FirstOrDefaultAsync<Client>();
-            //var client = collection
-            //    .Find(o=>o.client.Name== neworder.client.Name&&o.client.Email==neworder.client.Email)
-            //    .FirstOrDefault<Order>();
-            //neworder.client._id = client._id;
+            var client = await clientcollection
+                .Find(c=>c.Email==neworder.Client.Email&&c.Login ==neworder.Client.Login)
+                .FirstOrDefaultAsync<Client>();
+            neworder.Client = client;
             foreach (var buy in neworder.Buys)
             {
                 if (buy._id=="")
@@ -70,9 +67,9 @@ namespace BuyingLibrary.Contexts
                 Console.WriteLine(buy._id);
             }
 
-            Console.WriteLine(neworder.ToString());
-
+            neworder._id = ObjectId.GenerateNewId().ToString();
             await collection.InsertOneAsync(neworder);
+            Console.WriteLine(neworder.ToString());
             return neworder;
 
 

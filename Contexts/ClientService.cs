@@ -30,24 +30,19 @@ namespace BuyingLibrary.Contexts
 
         public async Task<Client> GetAsync(string email_or_login)
         {
-            return await collection.Find(c=>c.Email==email_or_login||c.Name==email_or_login).FirstOrDefaultAsync<Client>();
+            return await collection.Find(c=>c.Email==email_or_login||c.Login ==email_or_login).FirstOrDefaultAsync<Client>();
         }
 
 
         public async Task<Client> GetAsync(string login, string email)
         {
             Console.WriteLine("Get with 2 args");
-            return await collection.Find(c=>c.Name==login||c.Email==email).FirstOrDefaultAsync<Client>();
+            return await collection.Find(c=>c.Login ==login||c.Email==email).FirstOrDefaultAsync<Client>();
         }
 
         public async Task<Client> PostAsync(Client obj)
         {
             Console.WriteLine("Post client service");
-            //var client  = await collection.Find(c=>c.Email==obj.Email).FirstOrDefaultAsync<Client>();
-            //if (client != null)
-            //{
-            //    return client;
-            //} 
             await collection.InsertOneAsync(obj);
             return obj;
         }

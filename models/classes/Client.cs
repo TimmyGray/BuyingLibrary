@@ -9,20 +9,24 @@ namespace BuyingLibrary.models.classes
         [BsonRepresentation(BsonType.ObjectId)]
         public string? _id { get; set; }
 
-        [BsonElement("name")]
-        public string? Name { get; set; }
+        [BsonElement("login")]
+        public string? Login { get; set; }
 
         [BsonElement("email")]
         public string? Email { get; set; }
 
+        [BsonElement("password")]
         public string Password { get;set; }
         
-        public Client(string name, string email, string password) 
+        public Client(string login, string email, string password) 
         {
-            Name = name;
+            Login = login;
             Email = email;
-            Password = BCrypt.Net.BCrypt.HashPassword(password,BCrypt.Net.BCrypt.GenerateSalt());
-            
+            if (password != null)
+            {
+                Password = BCrypt.Net.BCrypt.HashPassword(password, BCrypt.Net.BCrypt.GenerateSalt());
+            }
+
         }
 
 
